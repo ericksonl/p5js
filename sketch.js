@@ -1,21 +1,44 @@
+var x = 900
+var y = 450
+var dx = 100
+var dy = 100
+speed = 1
+
 function setup() {
-  createCanvas(400, 300);
+  createCanvas(1800, 900);
+  background(0)
 }
 
 function draw() {
-  background('#000000') 
-  
-  rectMode(CENTER)
-
-  fill(0, 0, 255)
-  stroke(0, 255, 0)
-  rect(200, 150, 150, 150)
-
-
-
-
-  ellipse(150, 250, 100, 75)
-
-  fill(255, 0, 0)
+  frameRate(60);
   stroke(255)
+  strokeWeight(1)
+  fill(0)
+  ellipse(x, y, dx, dy)
+
+
+  x = random(x - 10, x + 10)
+  y = random(y - 10, y + 10)
+
+  if (dx >= 100 || dy >= 100) {
+    speed = -1
+  } else if (dx <= 20 || dy <= 20) {
+    speed = 1
+  }
+  
+  dx += speed
+  dy += speed
+
+  if (x > width) {
+    x = x - 10
+  } else if (x < 0) {
+    x = x + 10
+  }
+
+  if (y > height) {
+    y = y - 10
+  } else if (y < 0) {
+    y = y + 10
+  }
+
 }
