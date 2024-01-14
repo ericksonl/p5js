@@ -15,29 +15,34 @@
 </head>
 
 <body>
-  <div>
+
+  <div class="mainContent">
+    <h1>Sphereical Art Generator</h1>
     <script src="sketch.js"></script>
     <script src="ellipse.js"></script>
+    <div id="canvasForHTML"></div>
+    <br />
+    <button onclick="saveImg()">Save Img</button>
+    <button onclick="spawnEllipse()">Spawn Ellipse</button>
+    <button onclick="clearCanvas()" id="clearCanvas">Clear</button>
+    <br />
+    <br />
   </div>
 
-
-  <div class="slidecontainer">
-    <p id="opacity">Opacity: 50%</p>
-    <input oninput="getOpacity()" type="range" min="1" max="255" value="127.5" class="slider" id="opacityRange">
-    <p id="ballSize">Ball Size: 50</p>
-    <input oninput="getSize()" type="range" min="5" max="105" value="55" class="slider" id="sizeRange">
-    <p id="scatter">Scatter: 50px</p>
-    <input oninput="getScatter()" type="range" min="5" max="105" value="55" class="slider" id="scatterRange">
-    <p id="steps">Generations: 500</p>
-    <input oninput="getSteps()" type="range" min="1" max="1000" value="500" class="slider" id="stepsRange">
+  <div class="controls">
+    <h1>Controls</h1>
+    <div class="slidecontainer">
+      <p id="opacity">Opacity: 50%</p>
+      <input oninput="getOpacity()" type="range" min="1" max="255" value="127.5" class="slider" id="opacityRange">
+      <p id="ballSize">Ball Size: 50</p>
+      <input oninput="getSize()" type="range" min="5" max="105" value="55" class="slider" id="sizeRange">
+      <p id="scatter">Scatter: 50px</p>
+      <input oninput="getScatter()" type="range" min="5" max="105" value="55" class="slider" id="scatterRange">
+      <p id="steps">Generations: 500</p>
+      <input oninput="getSteps()" type="range" min="1" max="1000" value="500" class="slider" id="stepsRange">
+    </div>
   </div>
-  <br />
-  <button onclick="saveImg()">Save Img</button>
-  <button onclick="spawnEllipse()">Spawn Ellipse</button>
-  <button onclick="clearCanvas()" id="clearCanvas">Clear</button>
-  <br />
-  <br />
-  
+
 </body>
 
 </html>
