@@ -1,77 +1,47 @@
-var x = 900
-var y = 450
-var dx = 100
-var dy = 100
-speed = 1
-const Y_AXIS = 1;
-const X_AXIS = 2;
-let b1, b2, c1, c2;
+var boundsX = 0
+var boundsY = 0
+var rWidth = 800
+var steps = 0
+const ellipses = []
+let myCanvas
 
 function setup() {
-  createCanvas(1800, 900);
-  background('#005073')
+  myCanvas = createCanvas(800, 800)
+  background(random(0,255), random(0,255), random(0,255))
 
-    // Define colors
-    b1 = color(255);
-    b2 = color(0);
-    c1 = color(204, 102, 0);
-    c2 = color(0, 102, 153);
-  
-    // setGradient(50, 90, 540, 80, c1, c2, Y_AXIS);
-    // setGradient(50, 190, 540, 80, c2, c1, X_AXIS);
+  console.log(ellipses.length)
+
+  noFill()
+  strokeWeight(2)
+  rect(boundsX, boundsY, rWidth, rWidth);
 }
 
-function draw() {  
-  stroke('#71c7ec')
-  strokeWeight(1)
-  fill('#107dac')
-  ellipse(x, y, dx, dy)
+function draw() {
+  for (i = 0; i < ellipses.length; i++) {
+    ellipses[i].display()
+    // ellipse2.display()
 
-
-  x = random(x - 15, x + 15)
-  y = random(y - 15, y + 15)
-
-  if (dx >= 100 || dy >= 100) {
-    speed = -1
-  } else if (dx <= 20 || dy <= 20) {
-    speed = 1
-  }
-  
-  dx += speed
-  dy += speed
-
-  if (x > width) {
-    x = x - 10
-  } else if (x < 0) {
-    x = x + 10
+    if (
+      ellipses[i].x >= boundsX + ellipses[i].diameter &&
+      ellipses[i].x <= boundsX + rWidth - ellipses[i].diameter &&
+      ellipses[i].y >= boundsY + ellipses[i].diameter &&
+      ellipses[i].y <= boundsY + rWidth - ellipses[i].diameter && ellipses[i].steps < 500
+    ) {
+      ellipses[i].move()
+      ellipses[i].changeColor()
+    }
   }
 
-  if (y > height) {
-    y = y - 10
-  } else if (y < 0) {
-    y = y + 10
+  if (steps < 500) {
+    steps++
   }
-
 }
 
-function setGradient(x, y, w, h, c1, c2, axis) {
-  noFill();
+function saveImg() {
+  savedImg = myCanvas.get(boundsX, boundsY, rWidth, rWidth)
+  savedImg.save('suck', 'png')
+}
 
-  if (axis === Y_AXIS) {
-    // Top to bottom gradient
-    for (let i = y; i <= y + h; i++) {
-      let inter = map(i, y, y + h, 0, 1);
-      let c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(x, i, x + w, i);
-    }
-  } else if (axis === X_AXIS) {
-    // Left to right gradient
-    for (let i = x; i <= x + w; i++) {
-      let inter = map(i, x, x + w, 0, 1);
-      let c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(i, y, i, y + h);
-    }
-  }
+function spawnEllipse() {
+  ellipses.push(new Ellipse(random(400, 500), random(375, 475), random(30, 60)))
 }
