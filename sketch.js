@@ -1,16 +1,11 @@
 const ellipses = []
 let myCanvas
-let opacity, ballSize, scatterSize
 
 function setup() {
   
-  myCanvas = createCanvas(windowWidth * 0.5, windowHeight * 0.5);
+  myCanvas = createCanvas(windowWidth * 0.4, windowHeight * .75);
+  myCanvas.parent("canvasForHTML")
   background(random(0, 255), random(0, 255), random(0, 255))
-
-  noFill()
-  stroke(0)
-  strokeWeight(4)
-  rect(0, 0, width, height);
 }
 
 function draw() {
@@ -29,23 +24,24 @@ function draw() {
 
 
 function spawnEllipse() {
-  ellipses.push(new Ellipse(random(400, 500), random(375, 475), getSize(), getOpacity(), getScatter(), getSteps()))
+  let size = getSize()
+  let opacity = getOpacity()
+  let scatter = getScatter()
+  let steps = getSteps()
+  let x = random(size, width - size)
+  let y = random(size, height - size)
+  ellipses.push(new Ellipse(x, y, size, opacity, scatter, steps))
 }
 
 function saveImg() {
   savedImg = myCanvas.get(0, 0, width, height)
-  savedImg.save('suck', 'png')
+  savedImg.save('generatedArt', 'png')
 }
 
 function clearCanvas() {
   clear()
   ellipses.length = 0
   background(random(0, 255), random(0, 255), random(0, 255))
-  
-  noFill()
-  stroke(0)
-  strokeWeight(4)
-  rect(0, 0, width, height);
 }
 
 function getOpacity() {
@@ -67,7 +63,7 @@ function getScatter() {
 }
 
 function getSteps() {
-  generations = parseInt(document.getElementById("stepsRange").value)
-  document.getElementById("steps").innerHTML = "Generations: " + generations
-  return (generations)
+  steps = parseInt(document.getElementById("stepsRange").value)
+  document.getElementById("steps").innerHTML = "Generations: " + steps
+  return (steps)
 }
