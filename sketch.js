@@ -2,7 +2,7 @@ const ellipses = []
 let myCanvas
 
 function setup() {
-  
+
   myCanvas = createCanvas(windowWidth * 0.4, windowHeight * .75);
   myCanvas.parent("canvasForHTML")
   background(random(0, 255), random(0, 255), random(0, 255))
@@ -21,7 +21,6 @@ function draw() {
     }
   }
 }
-
 
 function spawnEllipse() {
   let size = getSize()
@@ -42,6 +41,17 @@ function clearCanvas() {
   clear()
   ellipses.length = 0
   background(random(0, 255), random(0, 255), random(0, 255))
+}
+
+function randomizeControls() {
+  document.getElementById("opacityRange").value = Math.floor(random(1, 255))
+  getOpacity()
+  document.getElementById("sizeRange").value = Math.floor(random(5, 105))
+  getSize()
+  document.getElementById("scatterRange").value = Math.floor(random(5, 105))
+  getScatter()
+  document.getElementById("stepsRange").value = Math.floor(random(1, 1000))
+  getSteps()
 }
 
 function getOpacity() {
@@ -67,3 +77,4 @@ function getSteps() {
   document.getElementById("steps").innerHTML = "Generations: " + steps
   return (steps)
 }
+
