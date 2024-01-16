@@ -1,53 +1,81 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
+:root {
+  --backgroundC: #D0DB97;
+  --foregroundC: #69B578;
+  --accentC: #3A7D44;
 }
 
+html,
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
-  margin: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: var(--backgroundC);
 }
 
 canvas {
   text-align: center;
-  border:3px solid black;
+  border: 3px solid black;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.tutorial {
+  padding-top: 4rem;
+  background-color: var(--foregroundC);
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1
+}
+
+h3 {
+  margin-bottom: 0px; /* Adjust this value to control the spacing */
+}
+
+hr {
+  border: 1px solid black; /* Set the border style, color, and width */
+  margin: 0 20px 20px 20px;
+}
+
+.tutorial p {
+  margin-top: -10px; /* Adjust this value to control the spacing */
+  margin-bottom: 20px; /* Adjust this value to control the spacing */
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .mainContent {
-  background-color: #c4c4;
-  float: left;
+  padding-top: 4rem;
+  height: calc(100vh - 4rem);
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 3;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2rem;
+  padding-bottom: 2.5rem;
 }
 
 .controls {
-  background-color: blueviolet;
-  float: right;
-}
-
-#canvasForHTML {
-  align-items: center;
-  padding: 5px;
-}
-
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #45a049;
+  padding-top: 4rem;
+  background-color: var(--foregroundC);
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1
 }
 
 .slidecontainer {
   width: 100%;
+  padding-bottom: 10rem;
 }
 
 .slider {
@@ -79,4 +107,30 @@ button:hover {
   border-radius: 50%;
   background: #04AA6D;
   cursor: pointer;
+}
+
+.buttons {
+  position: absolute;
+  width: 20%;
+  bottom: 20px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 25px;
+  font-size: 16px;
+  background-color: var(--accentC);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #254D32;
+}
+
+.spawnBtn {
+  padding-top: 1rem;
 }
