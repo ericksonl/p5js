@@ -13,6 +13,7 @@
   <script src="libraries/p5.min.js"></script>
   <script src="libraries/p5.sound.min.js"></script>
   <script src="libraries/p5.patgrad.js"></script>
+  <script src="main.js"></script>
 </head>
 
 <body>
@@ -20,32 +21,48 @@
 
     <div class="tutorial">
       <h2>How To Use:</h2>
-      <p>Experience the creative process with this program that generates dynamic spheres to paint the canvas! Click the "start" button and customize various parameters to achieve your desired result.</p>
-      
+      <p>Experience the creative process with this program that generates dynamic spheres to paint the canvas! Click the
+        "start" button and customize various parameters to achieve your desired result.
+      </p>
+
       <h3>Opacity</h3>
       <hr>
       <p>Adjust the transparency of the spawned spheres to create different visual effects.</p>
-      
+
       <h3>Ball Size</h3>
       <hr>
       <p>Modify the size of the spheres to influence the overall appearance of the artwork.</p>
-      
+
       <h3>Scatter</h3>
       <hr>
-      <p>Determine the spread or scatter between each sphere. Higher scatter values result in spheres being painted farther apart, while lower values bring them closer together.</p>
-      
+      <p>Determine the spread or scatter between each sphere. Higher scatter values result in spheres being painted
+        farther apart, while lower values bring them closer together.
+      </p>
+
       <h3>Generations</h3>
       <hr>
-      <p>Control the number of generations a spawned ball receives. More generations mean the sphere will paint for a longer duration.</p>
+      <p>Control the number of generations a spawned ball receives. More generations mean the sphere will paint for a
+        longer duration.
+      </p>
+      <div class="buttons">
+        <button onclick="showColor()">Color Mode</button> <br /><br />
+        <button onclick="showBW()">B&W Mode</button> <br /><br />
+      </div>
     </div>
 
     <div class="mainContent">
       <h1>Generative Art with Spheres</h1>
-      <script src="sketch.js"></script>
-      <script src="ellipse.js"></script>
-      <div id="canvasForHTML"></div>
-      <div class="spawnBtn">
-        <button onclick="spawnEllipse()">Spawn Ellipse</button> <br /><br />
+      <div id="colorSketch">
+        <script src="colorSketch.js"></script>
+        <script src="ellipse.js"></script>
+        <div id="canvasForHTML"></div>
+        <div class="spawnBtn">
+          <button onclick="spawnEllipse()">Spawn Ellipse</button> <br /><br />
+        </div>
+      </div>
+      <div id="bwSketch">
+        <script src="bwSketch.js"></script>
+        <div id="canvasForHTML"></div>
       </div>
     </div>
 
